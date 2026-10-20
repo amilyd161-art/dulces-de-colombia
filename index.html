@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dulces de Colombia</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
 
+  <!-- MENÚ -->
+  <header class="menu">
+    <a href="index.html" class="logo">Dulces<br><strong>de Colombia</strong></a>
+    <nav>
+      <a href="index.html" class="activo">Inicio</a>
+      <a href="#mapa">Regiones</a>
+      <a href="#">Recetas</a>
+      <a href="#">Sobre el proyecto</a>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="hero">
+
+    <!-- Texto de la izquierda -->
+    <section class="texto">
+      <h1>Un país,<br>mil sabores</h1>
+      <p>Descubre los postres típicos de cada región de Colombia. Haz clic en el mapa y conoce la dulzura de su cultura.</p>
+      <a href="#mapa" class="explorar">📍 Explora el mapa</a>
+    </section>
+
+    <!-- Mapa de la derecha -->
+    <section class="mapa" id="mapa">
+      <svg viewBox="-30 -5 340 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa de Colombia por regiones">
+
+        <a href="regiones/caribe.html">
+          <title>Región Caribe</title>
+          <polygon class="region" fill="#3f9a94" stroke="#efe6d6" stroke-width="2"
+            points="41,96 67,78 88,53 105,38 120,33 153,25 178,1 193,16 168,35 158,63 148,80 113,108 83,128 63,118 48,108"/>
+          <text x="112" y="68" class="etiqueta">Caribe</text>
+        </a>
+
+        <a href="regiones/pacifica.html">
+          <title>Región Pacífica</title>
+          <polygon class="region" fill="#7f9c7a" stroke="#efe6d6" stroke-width="2"
+            points="41,96 48,108 63,118 65,158 70,193 73,225 60,255 50,288 33,293 5,283 5,268 28,248 48,215 38,175 40,158 33,143 28,128"/>
+          <text x="30" y="195" class="etiqueta fuera">Pacífica</text>
+        </a>
+
+        <a href="regiones/andina.html">
+          <title>Región Andina</title>
+          <polygon class="region" fill="#e07a3f" stroke="#efe6d6" stroke-width="2"
+            points="148,80 170,123 175,138 168,163 155,180 140,200 125,220 103,248 85,268 68,283 50,288 60,255 73,225 70,193 65,158 63,118 83,128 113,108"/>
+          <text x="112" y="170" class="etiqueta">Andina</text>
+        </a>
+
+        <a href="regiones/orinoquia.html">
+          <title>Región Orinoquía</title>
+          <polygon class="region" fill="#e0b13a" stroke="#efe6d6" stroke-width="2"
+            points="175,138 223,138 280,158 288,188 285,208 238,215 175,238 114,234 125,220 140,200 155,180 168,163"/>
+          <text x="222" y="185" class="etiqueta">Orinoquía</text>
+        </a>
+
+        <a href="regiones/amazonia.html">
+          <title>Región Amazonía</title>
+          <polygon class="region" fill="#5a7d55" stroke="#efe6d6" stroke-width="2"
+            points="285,208 238,215 175,238 114,234 103,248 85,268 68,283 50,288 63,305 93,315 125,338 150,368 225,418 225,338 228,295 298,270 288,243"/>
+          <text x="185" y="290" class="etiqueta">Amazonía</text>
+        </a>
+
+      </svg>
+    </section>
+
+  </main>
+
+</body>
+</html>
