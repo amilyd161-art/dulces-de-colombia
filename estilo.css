@@ -1,12 +1,20 @@
 /* Tipografías desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Work+Sans:wght@300;400;500&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
 body {
   background-color: #C89FA5;
   color: #0f1b2d;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* evita scroll horizontal por el uso de vw */
+  min-height: 100vh;
 }
 
 h1 {
@@ -14,17 +22,18 @@ h1 {
   font-weight: 500;
   margin: 0;
   position: absolute;
-  font-size: 64px;
+  font-size: clamp(40px, 6vw, 84px); /* se adapta a la pantalla */
   text-align: center;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+  width: 90%;
 }
 
 h2 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  font-size: 36px;
+  font-size: clamp(28px, 3.5vw, 46px);
   text-align: center;
   margin: 0 0 24px 0;
 }
@@ -40,9 +49,10 @@ a:hover {
   text-decoration: none;
 }
 
+/* Columna principal: ocupa buena parte de la pantalla del computador */
 #contenido {
-  width: 90%;
-  max-width: 680px;
+  width: 88%;
+  max-width: 1000px;
   margin: 100px auto 0 auto;
   padding-bottom: 80px;
 }
@@ -51,23 +61,19 @@ a:hover {
   margin: 0 0 1.2em 0;
   font-family: 'Work Sans', sans-serif;
   font-weight: 300;
-  font-size: 19px;
+  font-size: clamp(17px, 1.4vw, 21px);
   line-height: 1.7;
   text-align: left;
 }
 
+/* Imagen: usa todo el ancho de la columna y mantiene proporción */
 .contenedor-imagen {
-  /* Rompe el margen de la columna de texto */
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(92vw, 1100px);
-  aspect-ratio: 16 / 9; /* rectángulo en lugar de cuadrado */
+  width: 100%;
+  aspect-ratio: 16 / 9;
   height: auto;
-
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 50px 0;
   border: 1px solid rgba(15, 27, 45, 0.5);
+  overflow: hidden;
 }
 
 .contenedor-imagen img {
@@ -75,4 +81,24 @@ a:hover {
   object-fit: cover;
   width: 100%;
   height: 100%;
+}
+
+/* Pantallas grandes (monitores amplios) */
+@media (min-width: 1400px) {
+  #contenido {
+    max-width: 1100px;
+  }
+}
+
+/* Tablet y celular */
+@media (max-width: 768px) {
+  #contenido {
+    width: 92%;
+    margin-top: 70px;
+  }
+
+  .contenedor-imagen {
+    aspect-ratio: 4 / 3;
+    margin: 32px 0;
+  }
 }
