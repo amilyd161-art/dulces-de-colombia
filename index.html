@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dulces de Colombia</title>
   <link rel="stylesheet" href="estilo.css?v=2">
+  <link rel="stylesheet" href="vista-previa.css?v=2">
 </head>
 <body>
 
@@ -41,11 +42,40 @@
     </section>
   </main>
 
+  <!-- Mini recuadro de vista previa (aparece al pasar el cursor) -->
+  <div id="vista-previa" class="vista-previa"></div>
+
   <script src="mapa.js"></script>
+  <script src="postres.js"></script>
   <script>
-    // Dibuja cada departamento como un enlace clicable
     const svg = document.getElementById('mapa-svg');
+    const vista = document.getElementById('vista-previa');
     const NS = 'http://www.w3.org/2000/svg';
+
+    function mostrarVista(dep, evento) {
+      const postres = POSTRES[dep.id] || [];
+      vista.style.setProperty('--color', dep.color);
+      vista.innerHTML = '<h4>' + dep.nombre + '</h4>' +
+        (postres.length
+          ? '<ol>' + postres.map(p => '<li>' + p + '</li>').join('') + '</ol>'
+          : '<p>Próximamente</p>');
+      vista.classList.add('visible');
+      moverVista(evento);
+    }
+
+    function moverVista(e) {
+      const margen = 18;
+      let x = e.clientX + margen;
+      let y = e.clientY + margen;
+      if (x + vista.offsetWidth > window.innerWidth - 10) x = e.clientX - vista.offsetWidth - margen;
+      if (y + vista.offsetHeight > window.innerHeight - 10) y = e.clientY - vista.offsetHeight - margen;
+      vista.style.left = x + 'px';
+      vista.style.top = y + 'px';
+    }
+
+    function ocultarVista() {
+      vista.classList.remove('visible');
+    }
 
     DEPARTAMENTOS.forEach(dep => {
       const enlace = document.createElementNS(NS, 'a');
@@ -56,10 +86,10 @@
       forma.setAttribute('fill', dep.color);
       forma.setAttribute('class', 'dep');
 
-      const titulo = document.createElementNS(NS, 'title');
-      titulo.textContent = dep.nombre;
+      forma.addEventListener('mouseenter', e => mostrarVista(dep, e));
+      forma.addEventListener('mousemove', moverVista);
+      forma.addEventListener('mouseleave', ocultarVista);
 
-      forma.appendChild(titulo);
       enlace.appendChild(forma);
       svg.appendChild(enlace);
     });
