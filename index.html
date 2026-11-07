@@ -6,6 +6,7 @@
   <title>Dulces de Colombia</title>
   <link rel="stylesheet" href="estilo.css?v=2">
   <link rel="stylesheet" href="vista-previa.css?v=2">
+  <link rel="stylesheet" href="ventana.css?v=1">
 </head>
 <body>
 
@@ -42,22 +43,54 @@
     </section>
   </main>
 
-  <!-- Mini recuadro de vista previa (aparece al pasar el cursor) -->
+  <!-- Mini recuadro al pasar el cursor -->
   <div id="vista-previa" class="vista-previa"></div>
+
+  <!-- Ventana con fotos y descripción al hacer clic -->
+  <div id="ventana" class="ventana" aria-hidden="true">
+    <div class="v-marca"></div>
+    <article class="v-tarjeta" role="dialog" aria-modal="true" aria-labelledby="v-titulo">
+      <button type="button" class="v-cerrar" aria-label="Cerrar">✕</button>
+      <header class="v-cabecera">
+        <span class="v-region"></span>
+        <h2 id="v-titulo"></h2>
+      </header>
+      <div class="v-cuerpo">
+        <figure class="v-polaroid">
+          <div class="v-foto">
+            <img alt="" hidden>
+            <div class="v-sin-foto" hidden></div>
+          </div>
+        </figure>
+        <div class="v-texto">
+          <div class="v-nav">
+            <button type="button" class="v-ant" aria-label="Postre anterior">←</button>
+            <span class="v-numero"></span>
+            <button type="button" class="v-sig" aria-label="Postre siguiente">→</button>
+          </div>
+          <h3 class="v-nombre"></h3>
+          <p class="v-descripcion"></p>
+        </div>
+      </div>
+      <div class="v-lista"></div>
+    </article>
+  </div>
 
   <script src="mapa.js"></script>
   <script src="postres.js"></script>
+  <script src="detalle-postres.js"></script>
+  <script src="ventana.js"></script>
   <script>
     const svg = document.getElementById('mapa-svg');
     const vista = document.getElementById('vista-previa');
     const NS = 'http://www.w3.org/2000/svg';
 
     function mostrarVista(dep, evento) {
-      const postres = POSTRES[dep.id] || [];
+      const nombres = itemsDe(dep).map(i => i.nombre);
       vista.style.setProperty('--color', dep.color);
       vista.innerHTML = '<h4>' + dep.nombre + '</h4>' +
-        (postres.length
-          ? '<ol>' + postres.map(p => '<li>' + p + '</li>').join('') + '</ol>'
+        (nombres.length
+          ? '<ol>' + nombres.map(p => '<li>' + p + '</li>').join('') + '</ol>'
           : '<p>Próximamente</p>');
       vista.classList.add('visible');
       moverVista(evento);
@@ -78,20 +111,21 @@
     }
 
     DEPARTAMENTOS.forEach(dep => {
-      const enlace = document.createElementNS(NS, 'a');
-      enlace.setAttribute('href', 'departamento.html?d=' + dep.id);
-
       const forma = document.createElementNS(NS, 'path');
       forma.setAttribute('d', dep.d);
       forma.setAttribute('fill', dep.color);
       forma.setAttribute('class', 'dep');
+      forma.setAttribute('tabindex', '0');
+      forma.setAttribute('role', 'button');
+      forma.setAttribute('aria-label', dep.nombre);
 
       forma.addEventListener('mouseenter', e => mostrarVista(dep, e));
       forma.addEventListener('mousemove', moverVista);
       forma.addEventListener('mouseleave', ocultarVista);
+      forma.addEventListener('click', () => { ocultarVista(); abrirVentana(dep); });
+      forma.addEventListener('keydown', e => { if (e.key === 'Enter') abrirVentana(dep); });
 
-      enlace.appendChild(forma);
-      svg.appendChild(enlace);
+      svg.appendChild(forma);
     });
   </script>
 
