@@ -6,9 +6,38 @@
   <title>Dulces de Colombia</title>
   <link rel="stylesheet" href="estilo.css?v=2">
   <link rel="stylesheet" href="vista-previa.css?v=2">
-  <link rel="stylesheet" href="ventana.css?v=1">
+  <link rel="stylesheet" href="ventana.css?v=3">
 </head>
 <body>
+
+  <!-- Dibujos reutilizables (hojas, flor, rayitas) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="hoja" viewBox="0 0 80 50">
+      <path d="M2 42 C 8 10, 42 -2, 78 4 C 74 34, 42 52, 2 42 Z" fill="currentColor"/>
+      <path d="M2 42 C 25 30, 50 18, 74 7" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="flor" viewBox="-50 -50 100 100">
+      <g style="color:inherit">
+        <g fill="currentColor" stroke="rgba(120,30,50,.35)" stroke-width="1.2">
+          <ellipse cx="0" cy="-24" rx="15" ry="25"/>
+          <ellipse cx="0" cy="-24" rx="15" ry="25" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-24" rx="15" ry="25" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-24" rx="15" ry="25" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-24" rx="15" ry="25" transform="rotate(288)"/>
+        </g>
+        <circle r="9" fill="#f6c24a"/>
+        <path d="M0 0 L16 -26" stroke="#c4506b" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="16" cy="-26" r="3.2" fill="#f6c24a"/>
+      </g>
+    </symbol>
+    <symbol id="rayitas" viewBox="0 0 60 60">
+      <g fill="none" stroke="#e0a526" stroke-width="5" stroke-linecap="round">
+        <path d="M6 14 C 14 8, 24 8, 32 14"/>
+        <path d="M14 30 C 22 24, 32 24, 40 30"/>
+        <path d="M24 46 C 32 40, 42 40, 50 46"/>
+      </g>
+    </symbol>
+  </svg>
 
   <header class="menu">
     <a href="index.html" class="logo">
@@ -48,38 +77,75 @@
 
   <!-- Ventana con fotos y descripción al hacer clic -->
   <div id="ventana" class="ventana" aria-hidden="true">
-    <div class="v-marca"></div>
     <article class="v-tarjeta" role="dialog" aria-modal="true" aria-labelledby="v-titulo">
-      <button type="button" class="v-cerrar" aria-label="Cerrar">✕</button>
-      <header class="v-cabecera">
-        <span class="v-region"></span>
-        <h2 id="v-titulo"></h2>
-      </header>
-      <div class="v-cuerpo">
-        <figure class="v-polaroid">
-          <div class="v-foto">
-            <img alt="" hidden>
-            <div class="v-sin-foto" hidden></div>
+
+      <!-- Decoraciones que se salen del papel -->
+      <svg class="deco d-hojas-izq" viewBox="0 0 110 170">
+        <use href="#hoja" x="10" y="10" width="80" height="50" transform="rotate(20 50 35)" style="color:#4f7a3a"/>
+        <use href="#hoja" x="0" y="60" width="85" height="52" transform="rotate(-10 40 85)" style="color:#6a9448"/>
+        <use href="#hoja" x="14" y="112" width="80" height="48" transform="rotate(32 55 135)" style="color:#3f6a35"/>
+      </svg>
+      <svg class="deco d-hojas-flor" viewBox="0 0 150 160">
+        <use href="#hoja" x="0" y="10" width="90" height="56" transform="rotate(-50 45 38)" style="color:#4f7a3a"/>
+        <use href="#hoja" x="8" y="90" width="90" height="56" transform="rotate(35 50 118)" style="color:#3f6a35"/>
+        <use href="#hoja" x="40" y="60" width="90" height="56" transform="rotate(-8 85 88)" style="color:#6a9448"/>
+        <use href="#flor" x="52" y="34" width="86" height="86" style="color:#e8718c"/>
+      </svg>
+      <svg class="deco d-hojas-der" viewBox="0 0 150 130">
+        <use href="#hoja" x="0" y="50" width="90" height="56" transform="rotate(-20 45 78)" style="color:#4f7a3a"/>
+        <use href="#hoja" x="40" y="70" width="90" height="56" transform="rotate(10 85 98)" style="color:#6a9448"/>
+        <use href="#flor" x="70" y="10" width="46" height="46" style="color:#f2c230"/>
+        <use href="#flor" x="104" y="40" width="34" height="34" style="color:#f2c230"/>
+      </svg>
+      <svg class="deco d-rayitas" viewBox="0 0 60 60"><use href="#rayitas"/></svg>
+      <svg class="deco d-rayitas-2" viewBox="0 0 60 60"><use href="#rayitas"/></svg>
+
+      <div class="v-papel">
+        <button type="button" class="v-cerrar" aria-label="Cerrar">✕</button>
+
+        <div class="v-principal">
+          <figure class="v-polaroid">
+            <div class="v-foto">
+              <img alt="" hidden>
+              <div class="v-sin-foto" hidden></div>
+            </div>
+          </figure>
+
+          <div class="v-info">
+            <span class="v-region"><span>📍</span><span class="v-region-texto"></span></span>
+            <h2 id="v-titulo"></h2>
+            <svg class="v-subrayado" viewBox="0 0 300 16" preserveAspectRatio="none">
+              <path d="M4 10 C 50 2, 100 14, 150 8 S 250 4, 296 9" fill="none" stroke="#e0a526" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <h3 class="v-nombre"></h3>
+            <p class="v-descripcion"></p>
+            <p class="v-dato"></p>
           </div>
-        </figure>
-        <div class="v-texto">
-          <div class="v-nav">
-            <button type="button" class="v-ant" aria-label="Postre anterior">←</button>
-            <span class="v-numero"></span>
-            <button type="button" class="v-sig" aria-label="Postre siguiente">→</button>
-          </div>
-          <h3 class="v-nombre"></h3>
-          <p class="v-descripcion"></p>
+
+          <svg class="v-forma" aria-hidden="true"><path></path></svg>
+        </div>
+
+        <div class="v-banda">
+          <span>
+            <svg viewBox="0 0 34 22"><use href="#hoja" width="34" height="22" style="color:#5f8a3f"/></svg>
+            Sus dulces típicos
+            <svg viewBox="0 0 34 22" style="transform:scaleX(-1)"><use href="#hoja" width="34" height="22" style="color:#5f8a3f"/></svg>
+          </span>
+        </div>
+
+        <div class="v-carrusel">
+          <button type="button" class="v-flecha v-ant" aria-label="Postre anterior">‹</button>
+          <div class="v-lista"></div>
+          <button type="button" class="v-flecha v-sig" aria-label="Postre siguiente">›</button>
         </div>
       </div>
-      <div class="v-lista"></div>
     </article>
   </div>
 
   <script src="mapa.js"></script>
   <script src="postres.js"></script>
   <script src="detalle-postres.js"></script>
-  <script src="ventana.js"></script>
+  <script src="ventana.js?v=3"></script>
   <script>
     const svg = document.getElementById('mapa-svg');
     const vista = document.getElementById('vista-previa');
