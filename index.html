@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dulces de Colombia</title>
-  <link rel="stylesheet" href="estilo.css?v=2">
+  <link rel="stylesheet" href="estilo.css?v=4">
   <link rel="stylesheet" href="vista-previa.css?v=2">
   <link rel="stylesheet" href="ventana.css?v=3">
 </head>
 <body>
 
-  <!-- Dibujos reutilizables (hojas, flor, rayitas) -->
+  <!-- Dibujos reutilizables (hojas, flores) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="hoja" viewBox="0 0 80 50">
       <path d="M2 42 C 8 10, 42 -2, 78 4 C 74 34, 42 52, 2 42 Z" fill="currentColor"/>
@@ -37,6 +37,48 @@
         <path d="M24 46 C 32 40, 42 40, 50 46"/>
       </g>
     </symbol>
+
+    <!-- Orquídea (Cattleya trianae, la flor nacional de Colombia) -->
+    <symbol id="orquidea" viewBox="-60 -62 120 124">
+      <g stroke="#7a2f86" stroke-width="1" stroke-opacity=".55">
+        <ellipse cx="0" cy="-34" rx="10" ry="27" fill="#d9a0e3"/>
+        <ellipse cx="0" cy="-34" rx="10" ry="27" fill="#d9a0e3" transform="rotate(125)"/>
+        <ellipse cx="0" cy="-34" rx="10" ry="27" fill="#d9a0e3" transform="rotate(235)"/>
+        <path d="M-4 -4 C -24 -34, -58 -26, -56 -4 C -54 14, -26 12, -4 -4Z" fill="#e6b4ee"/>
+        <path d="M4 -4 C 24 -34, 58 -26, 56 -4 C 54 14, 26 12, 4 -4Z" fill="#e6b4ee"/>
+      </g>
+      <path d="M-12 -2 C -34 10, -30 40, -8 44 C -2 46 2 46 8 44 C 30 40 34 10 12 -2 C 6 6 -6 6 -12 -2Z" fill="#a4208a" stroke="#6d1260" stroke-width="1.2"/>
+      <path d="M-6 6 C -10 20, -6 32, 0 34 C 6 32 10 20 6 6 C 2 10 -2 10 -6 6Z" fill="#f7d24d"/>
+      <path d="M-24 30 C -18 38 -10 42 -4 43 M 24 30 C 18 38 10 42 4 43" fill="none" stroke="#d96ac8" stroke-width="1.4" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Heliconia -->
+    <symbol id="heliconia" viewBox="0 0 100 130">
+      <path d="M50 124 C 46 90, 54 60, 50 8" fill="none" stroke="#3f6a35" stroke-width="3.5" stroke-linecap="round"/>
+      <g stroke="#7d1f12" stroke-width="1">
+        <path d="M50 108 C 26 106, 8 92, 4 74 C 26 76, 44 86, 50 108Z" fill="#d6322b"/>
+        <path d="M50 88 C 74 86, 92 72, 96 54 C 74 56, 56 66, 50 88Z" fill="#e0452c"/>
+        <path d="M50 68 C 26 66, 10 52, 6 36 C 28 38, 44 48, 50 68Z" fill="#d6322b"/>
+        <path d="M50 48 C 72 46, 88 34, 92 18 C 72 20, 56 28, 50 48Z" fill="#e0452c"/>
+        <path d="M50 30 C 36 26, 30 16, 32 4 C 44 8, 50 18, 50 30Z" fill="#d6322b"/>
+      </g>
+      <g fill="none" stroke="#f3c623" stroke-width="3" stroke-linecap="round">
+        <path d="M5 74 C 26 76, 44 86, 50 108"/><path d="M95 54 C 74 56, 56 66, 50 88"/>
+        <path d="M7 36 C 28 38, 44 48, 50 68"/><path d="M91 18 C 72 20, 56 28, 50 48"/>
+      </g>
+    </symbol>
+
+    <!-- Flor de café -->
+    <symbol id="cafe" viewBox="-40 -40 80 80">
+      <g fill="#fffdf6" stroke="#cfc6a8" stroke-width="1.2">
+        <ellipse cx="0" cy="-20" rx="9" ry="19"/>
+        <ellipse cx="0" cy="-20" rx="9" ry="19" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-20" rx="9" ry="19" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-20" rx="9" ry="19" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-20" rx="9" ry="19" transform="rotate(288)"/>
+      </g>
+      <circle r="5.5" fill="#f1d36b" stroke="#c9a52e" stroke-width="1"/>
+    </symbol>
   </svg>
 
   <header class="menu">
@@ -53,9 +95,27 @@
   </header>
 
   <main class="hero">
+
+    <!-- Flores de adorno -->
+    <svg class="adorno a-hojas-sup" viewBox="0 0 130 90" aria-hidden="true">
+      <use href="#hoja" x="0" y="10" width="80" height="50" style="color:#6a9448"/>
+      <use href="#hoja" x="40" y="30" width="86" height="54" style="color:#4f7a3a" transform="rotate(25 83 57)"/>
+    </svg>
+    <svg class="adorno a-orquidea" viewBox="-60 -62 120 124" aria-hidden="true"><use href="#orquidea" x="-60" y="-62" width="120" height="124"/></svg>
+    <svg class="adorno a-heliconia" viewBox="0 0 100 130" aria-hidden="true"><use href="#heliconia" width="100" height="130"/></svg>
+    <svg class="adorno a-hojas-inf" viewBox="0 0 150 70" aria-hidden="true">
+      <use href="#hoja" x="0" y="20" width="80" height="50" style="color:#4f7a3a" transform="rotate(-12 40 45)"/>
+      <use href="#hoja" x="60" y="14" width="86" height="54" style="color:#6a9448" transform="rotate(10 103 41)"/>
+    </svg>
+    <svg class="adorno a-cafe-1" viewBox="-40 -40 80 80" aria-hidden="true"><use href="#cafe" x="-40" y="-40" width="80" height="80"/></svg>
+    <svg class="adorno a-cafe-2" viewBox="-40 -40 80 80" aria-hidden="true"><use href="#cafe" x="-40" y="-40" width="80" height="80"/></svg>
+    <svg class="adorno a-cafe-3" viewBox="-40 -40 80 80" aria-hidden="true"><use href="#cafe" x="-40" y="-40" width="80" height="80"/></svg>
+    <svg class="adorno a-orq-der" viewBox="-60 -62 120 124" aria-hidden="true"><use href="#orquidea" x="-60" y="-62" width="120" height="124"/></svg>
+
     <section class="texto">
       <h1>Un país,<br>mil sabores</h1>
       <p>Descubre los postres típicos de cada región de Colombia. Haz clic en el mapa y conoce la dulzura de su cultura.</p>
+      <a href="#mapa" class="explorar">📍 Explora el mapa</a>
     </section>
 
     <section class="mapa" id="mapa">
@@ -64,7 +124,19 @@
       <span class="etiqueta-region andina">⛰️ Andina</span>
       <span class="etiqueta-region orinoquia">Orinoquía</span>
       <span class="etiqueta-region amazonia">🌳 Amazonía</span>
-      <span class="etiqueta-region insular">🏝️ Insular</span>
+
+      <!-- Recuadro de la región insular (San Andrés, Providencia y Santa Catalina) -->
+      <div class="insular-caja">
+        <svg id="insular-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Archipiélago de San Andrés, Providencia y Santa Catalina">
+          <g fill="none" stroke="#7fb8d6" stroke-width="2.2" stroke-linecap="round" opacity="0.8">
+            <path d="M6 94 q6 -5 12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0"/>
+            <path d="M4 40 q6 -5 12 0 t12 0 t12 0"/>
+            <path d="M52 68 q6 -5 12 0 t12 0 t12 0 t6 0"/>
+          </g>
+        </svg>
+        <span class="insular-nombre">🏝️ Insular</span>
+      </div>
 
       <svg id="mapa-svg" viewBox="240 80 660 900" xmlns="http://www.w3.org/2000/svg"
            role="img" aria-label="Mapa de Colombia por departamentos"></svg>
@@ -142,25 +214,48 @@
   </div>
 
   <script src="mapa.js"></script>
-  <script>
-    // Región Insular: San Andrés, Providencia y Santa Catalina
-    DEPARTAMENTOS.push({
-      "id": "san-andres",
-      "nombre": "San Andrés y\u00A0Providencia",
-      "region": "insular",
-      "color": "#3b8fd0",
-      "d": "M292,196C303,199 309,213 306,230C304,244 310,255 304,268C300,278 288,278 283,268C279,255 286,244 282,230C278,213 282,199 292,196Z M318,129C330,129 338,140 337,154C335,168 325,180 314,178C304,177 300,166 303,153C306,140 310,131 318,129Z M288,121C293,117 300,121 299,128C297,133 289,133 286,128Z",
-      "cx": 310,
-      "cy": 195
-    });
-  </script>
   <script src="postres.js"></script>
   <script src="detalle-postres.js"></script>
-  <script src="ventana.js?v=3"></script>
+  <script src="ventana.js?v=4"></script>
   <script>
+    const NS = 'http://www.w3.org/2000/svg';
+
+    /* ===== REGIÓN INSULAR: San Andrés, Providencia y Santa Catalina ===== */
+    const ISLAS = [
+      'M34 48 C38 46 42 50 43 57 C44 66 42 77 39 85 C37 90 32 89 31 83 C29 75 29 64 31 56 C32 52 33 49 34 48 Z',  // San Andrés
+      'M66 14 C73 11 80 14 81 21 C82 28 77 34 70 33 C63 32 59 26 60 20 C61 17 63 15 66 14 Z',                      // Providencia
+      'M85 22 C88 21 90 23 89 26 C88 28 85 28 84 26 C83 24 84 23 85 22 Z'                                           // Santa Catalina
+    ];
+
+    const SAN_ANDRES = {
+      id: 'san-andres',
+      nombre: 'San Andrés, Providencia y Santa Catalina',
+      region: 'insular',
+      color: '#3b9fd1',
+      d: ISLAS.join(' ')
+    };
+
+    // Los 5 postres de la región insular (cada uno necesita su foto en imagenes/postres/)
+    Object.assign(DETALLE, {
+      'pan-bon': { nombre: 'Pan Bon isleño', emoji: '🍞', color: '#b87333',
+        texto: 'Pan dulce y especiado de la cocina raizal, hecho con harina, mantequilla, azúcar y nuez moscada. Se disfruta en el desayuno o la merienda, con café o té.',
+        dato: 'En las islas es típico verlo en el desayuno junto a una taza de té de menta.' },
+      'johnny-cake': { nombre: 'Johnny cake', emoji: '🫓', color: '#d9a441',
+        texto: 'Pan sencillo enriquecido con leche de coco, mantequilla y un toque de azúcar. Es uno de los panes más queridos de San Andrés y Providencia.',
+        dato: 'También se le conoce como journey cake.' },
+      'sugar-cake': { nombre: 'Sugar cake', emoji: '🍰', color: '#e08f7a',
+        texto: 'Dulce de la repostería isleña, donde el coco es protagonista. Hace parte de la tradición de tortas y amasijos de las islas.' },
+      'coconut-pie': { nombre: 'Coconut pie', emoji: '🥧', color: '#6fb7c4',
+        texto: 'El pie de coco es uno de los postres favoritos de la repostería raizal: una tarta que celebra el sabor tropical del coco.' },
+      'dulce-coco': { nombre: 'Dulce de coco', emoji: '🥥', color: '#8fc9b0',
+        texto: 'Coco rallado cocinado con azúcar hasta lograr un dulce suave y pegajoso. Es un símbolo de la región insular.',
+        dato: 'El coco es el segundo producto agrícola más importante de las islas.' }
+    });
+    DEP_POSTRES['san-andres'] = ['pan-bon', 'johnny-cake', 'sugar-cake', 'coconut-pie', 'dulce-coco'];
+
+    /* ===== Mini recuadro al pasar el cursor ===== */
     const svg = document.getElementById('mapa-svg');
     const vista = document.getElementById('vista-previa');
-    const NS = 'http://www.w3.org/2000/svg';
 
     function mostrarVista(dep, evento) {
       const nombres = itemsDe(dep).map(i => i.nombre);
@@ -187,6 +282,7 @@
       vista.classList.remove('visible');
     }
 
+    /* ===== Departamentos del mapa ===== */
     DEPARTAMENTOS.forEach(dep => {
       const forma = document.createElementNS(NS, 'path');
       forma.setAttribute('d', dep.d);
@@ -204,6 +300,29 @@
 
       svg.appendChild(forma);
     });
+
+    /* ===== Islas (mismo comportamiento que los departamentos) ===== */
+    const grupoIslas = document.createElementNS(NS, 'g');
+    grupoIslas.setAttribute('class', 'isla');
+    grupoIslas.setAttribute('tabindex', '0');
+    grupoIslas.setAttribute('role', 'button');
+    grupoIslas.setAttribute('aria-label', SAN_ANDRES.nombre);
+
+    ISLAS.forEach(d => {
+      const isla = document.createElementNS(NS, 'path');
+      isla.setAttribute('d', d);
+      isla.setAttribute('fill', SAN_ANDRES.color);
+      isla.setAttribute('class', 'dep');
+      grupoIslas.appendChild(isla);
+    });
+
+    grupoIslas.addEventListener('mouseenter', e => mostrarVista(SAN_ANDRES, e));
+    grupoIslas.addEventListener('mousemove', moverVista);
+    grupoIslas.addEventListener('mouseleave', ocultarVista);
+    grupoIslas.addEventListener('click', () => { ocultarVista(); abrirVentana(SAN_ANDRES); });
+    grupoIslas.addEventListener('keydown', e => { if (e.key === 'Enter') abrirVentana(SAN_ANDRES); });
+
+    document.getElementById('insular-svg').appendChild(grupoIslas);
   </script>
 
 </body>
