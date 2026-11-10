@@ -4,6 +4,7 @@ const TEMAS = {
   andina:    { base: '#4a2a1c', etiqueta: 'Región Andina' },
   pacifica:  { base: '#2a3d3a', etiqueta: 'Región Pacífica' },
   orinoquia: { base: '#4a3a14', etiqueta: 'Región Orinoquía' }
+  insular:   { base: '#14476a', etiqueta: 'Región Insular' }
 };
 
 const ventana = document.getElementById('ventana');
