@@ -1,123 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Lora:ital,wght@0,400;0,500;0,600;1,500&display=swap');
+
 .sin-scroll { overflow: hidden; }
 .ventana [hidden] { display: none !important; }
 
+/* ================= FONDO: la página se ve detrás, teñida con el color de la región ================= */
 .ventana {
+  --crema: #f4e9d0;
+  --tinta: #2b2118;
   position: fixed;
   inset: 0;
   z-index: 200;
-  display: grid;
-  place-items: center;
-  padding: 20px;
+  display: flex;
+  padding: 34px 20px;
   overflow-y: auto;
-  background-color: var(--base, #1f3326);
-  background:
-    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--tono, #888) 60%, transparent) 0, transparent 45%),
-    radial-gradient(circle at 85% 85%, color-mix(in srgb, var(--acento, #888) 50%, transparent) 0, transparent 45%),
-    var(--base, #1f3326);
+  background: color-mix(in srgb, var(--base, #1f3326) 58%, transparent);
+  backdrop-filter: blur(5px);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
 }
 .ventana.abierta { opacity: 1; visibility: visible; }
 
-/* Nombre gigante de fondo */
-.v-marca {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  padding: 0 20px;
-  overflow: hidden;
-  font-family: var(--fuente-titulos);
-  font-size: clamp(4rem, 15vw, 12rem);
-  font-weight: 700;
-  line-height: 1;
-  text-align: center;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.07);
-  pointer-events: none;
-}
-
-/* Tarjeta de papel */
+/* ================= TARJETA DE PAPEL RASGADO ================= */
 .v-tarjeta {
   position: relative;
-  width: min(940px, 100%);
-  padding: 34px 40px 28px;
-  background: #f2e9d5;
-  border-top: 10px solid var(--tono, #888);
-  border-radius: 4px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-  transform: rotate(-0.6deg);
+  width: min(1080px, 100%);
+  margin: auto;
+  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
 }
-.ventana.abierta .v-tarjeta { animation: subir 0.45s ease both; }
-
+.ventana.abierta .v-tarjeta { animation: subir 0.5s ease both; }
 @keyframes subir {
-  from { opacity: 0; transform: translateY(40px) rotate(-3deg) scale(0.96); }
-  to   { opacity: 1; transform: translateY(0) rotate(-0.6deg) scale(1); }
+  from { opacity: 0; transform: translateY(36px) rotate(-1.5deg) scale(0.97); }
+  to   { opacity: 1; transform: none; }
 }
 
+.v-papel {
+  position: relative;
+  padding: 46px 54px 40px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .32 0 0 0 0 .18 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 15% 8%, #fcf5e2 0, transparent 55%),
+    radial-gradient(ellipse at 92% 95%, color-mix(in srgb, var(--tono, #c9a77a) 22%, #ecdcb8) 0, transparent 55%),
+    var(--crema);
+  clip-path: polygon(0.00% 1.00%, 2.17% 0.75%, 4.35% 0.46%, 6.52% 1.31%, 8.70% 0.32%, 10.87% 1.11%, 13.04% 0.82%, 15.22% 0.30%, 17.39% 1.06%, 19.57% 0.26%, 21.74% 0.94%, 23.91% 0.32%, 26.09% 0.35%, 28.26% 0.92%, 30.43% 1.61%, 32.61% 0.41%, 34.78% 0.58%, 36.96% 1.27%, 39.13% 1.81%, 41.30% 1.18%, 43.48% 0.87%, 45.65% 1.86%, 47.83% 0.28%, 50.00% 1.66%, 52.17% 0.69%, 54.35% 0.45%, 56.52% 0.40%, 58.70% 0.72%, 60.87% 1.59%, 63.04% 0.51%, 65.22% 1.19%, 67.39% 1.29%, 69.57% 0.83%, 71.74% 1.13%, 73.91% 0.31%, 76.09% 0.30%, 78.26% 0.55%, 80.43% 1.36%, 82.61% 0.93%, 84.78% 0.73%, 86.96% 1.20%, 89.13% 0.97%, 91.30% 0.71%, 93.48% 1.55%, 95.65% 1.39%, 97.83% 0.61%, 100.00% 1.00%, 99.44% 7.14%, 99.48% 14.29%, 99.20% 21.43%, 99.32% 28.57%, 99.67% 35.71%, 99.12% 42.86%, 99.81% 50.00%, 99.57% 57.14%, 99.29% 64.29%, 99.78% 71.43%, 99.51% 78.57%, 99.87% 85.71%, 99.37% 92.86%, 99.29% 99.00%, 97.50% 98.77%, 95.00% 98.44%, 92.50% 99.05%, 90.00% 98.64%, 87.50% 98.75%, 85.00% 98.76%, 82.50% 98.90%, 80.00% 98.48%, 77.50% 98.36%, 75.00% 98.88%, 72.50% 98.67%, 70.00% 99.33%, 67.50% 98.63%, 65.00% 98.69%, 62.50% 98.31%, 60.00% 98.50%, 57.50% 99.09%, 55.00% 98.98%, 52.50% 98.66%, 50.00% 99.38%, 47.50% 98.89%, 45.00% 99.22%, 42.50% 99.27%, 40.00% 99.34%, 37.50% 98.55%, 35.00% 99.26%, 32.50% 99.13%, 30.00% 98.97%, 27.50% 98.44%, 25.00% 99.31%, 22.50% 98.91%, 20.00% 98.80%, 17.50% 98.43%, 15.00% 98.50%, 12.50% 98.45%, 10.00% 99.09%, 7.50% 98.94%, 5.00% 99.01%, 2.50% 98.43%, 0.60% 98.35%, 0.21% 92.86%, 0.22% 85.71%, 0.26% 78.57%, 0.26% 71.43%, 0.44% 64.29%, 0.51% 57.14%, 0.28% 50.00%, 0.10% 42.86%, 0.39% 35.71%, 0.36% 28.57%, 0.50% 21.43%, 0.77% 14.29%, 0.58% 7.14%);
+}
+
+/* Cerrar */
 .v-cerrar {
   position: absolute;
-  top: 12px;
-  right: 14px;
-  width: 38px;
-  height: 38px;
-  font-size: 1.1rem;
+  top: 40px;
+  right: 46px;
+  z-index: 5;
+  width: 52px;
+  height: 52px;
+  font-size: 1.5rem;
+  line-height: 1;
   cursor: pointer;
-  color: #2b2118;
-  background: rgba(60, 50, 30, 0.1);
-  border: 0;
+  color: var(--tinta);
+  background: rgba(255, 250, 235, 0.7);
+  border: 3px solid var(--tinta);
   border-radius: 50%;
+  transition: transform 0.2s, background 0.2s;
 }
-.v-cerrar:hover { background: rgba(60, 50, 30, 0.22); }
+.v-cerrar:hover { background: #fff; transform: rotate(90deg); }
 
-.v-region {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #6b5f4a;
-}
-.v-cabecera h2 {
-  margin: 4px 0 22px;
-  font-family: var(--fuente-titulos);
-  font-size: 2.6rem;
-  line-height: 1.1;
-  color: #1f3a2a;
-}
-
-.v-cuerpo {
+/* ================= PARTE DE ARRIBA ================= */
+.v-principal {
   display: grid;
-  grid-template-columns: 290px 1fr;
-  gap: 36px;
-  align-items: start;
+  grid-template-columns: 330px 1fr 190px;
+  gap: 18px 30px;
+  align-items: center;
+  min-height: 330px;
 }
 
 /* Foto tipo polaroid */
 .v-polaroid {
   position: relative;
-  margin: 0;
-  padding: 10px 10px 38px;
+  margin: 8px 0 0 6px;
+  padding: 12px 12px 40px;
   background: #fff;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-  transform: rotate(-3deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: rotate(-6deg);
 }
 .v-polaroid::before {
   content: '';
   position: absolute;
-  top: -14px;
-  left: 50%;
-  width: 96px;
-  height: 26px;
-  background: color-mix(in srgb, var(--tono, #888) 70%, #fff);
-  opacity: 0.85;
-  transform: translateX(-50%) rotate(2deg);
+  top: -18px;
+  left: 30%;
+  width: 118px;
+  height: 36px;
+  background: rgba(225, 200, 150, 0.78);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transform: rotate(-4deg);
 }
-.v-foto {
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  background: #ddd;
-}
+.v-foto { aspect-ratio: 1 / 1; overflow: hidden; background: #ddd; }
 .v-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .v-sin-foto {
   width: 100%;
@@ -134,92 +110,187 @@
 .v-sin-foto small { font-size: 0.85rem; letter-spacing: 0.05em; }
 
 /* Texto */
-.v-nav { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-.v-nav button {
-  width: 34px;
-  height: 34px;
-  cursor: pointer;
-  font-size: 1rem;
-  color: #2b2118;
-  background: #fbf5e6;
-  border: 2px solid rgba(60, 50, 30, 0.25);
-  border-radius: 50%;
-}
-.v-nav button:hover { background: #fff; }
-.v-numero { font-size: 0.9rem; color: #6b5f4a; }
-
-.v-nombre {
-  font-family: var(--fuente-titulos);
-  font-size: 2rem;
-  font-style: italic;
-  font-weight: 500;
-  line-height: 1.15;
-  color: #2f5a44;
-}
-.v-descripcion {
-  margin-top: 14px;
-  font-size: 1.02rem;
-  line-height: 1.75;
-  color: #4a4030;
-}
-
-.ventana.cambio .v-polaroid { animation: pop 0.45s ease; }
-.ventana.cambio .v-texto    { animation: entrar 0.4s ease; }
-@keyframes pop {
-  from { transform: rotate(4deg) scale(0.9); opacity: 0.4; }
-  to   { transform: rotate(-3deg) scale(1); opacity: 1; }
-}
-@keyframes entrar {
-  from { opacity: 0; transform: translateX(16px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-/* Stickers para elegir el postre */
-.v-lista {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 26px;
-  padding-top: 20px;
-  border-top: 2px dashed rgba(60, 50, 30, 0.25);
-}
-.v-chip {
-  display: flex;
+.v-info { position: relative; padding-right: 10px; }
+.v-region {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px 8px 8px;
-  font: inherit;
-  font-size: 0.88rem;
-  color: #3b3226;
-  cursor: pointer;
-  background: #fbf5e6;
-  border: 2px solid rgba(60, 50, 30, 0.25);
+  padding: 7px 18px 7px 12px;
+  font-family: 'Lora', serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--tinta);
+  background: #f2b9a8;
   border-radius: 999px;
-  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 2px 0 rgba(120, 60, 40, 0.18);
 }
-.v-chip span {
-  display: grid;
-  place-items: center;
-  width: 24px;
-  height: 24px;
-  font-size: 0.8rem;
+.v-info h2 {
+  margin-top: 12px;
+  font-family: 'Fraunces', 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 5.4vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #1f3a2a;
+}
+.v-subrayado { display: block; width: min(300px, 80%); height: 16px; margin: 4px 0 14px; }
+.v-nombre {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
   font-weight: 700;
-  background: rgba(60, 50, 30, 0.12);
+  color: #7a4a1c;
+}
+.v-descripcion {
+  margin-top: 8px;
+  font-family: 'Lora', serif;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: #3a2f22;
+}
+.v-dato {
+  margin-top: 12px;
+  padding-left: 14px;
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: #6b4f2a;
+  border-left: 4px solid var(--tono, #c9a77a);
+}
+
+/* Silueta del departamento, como recorte de papel */
+.v-forma {
+  width: 100%;
+  max-height: 250px;
+  overflow: visible;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.3));
+  transform: rotate(3deg);
+}
+.v-forma path { fill: var(--acento, #5a7d55); stroke: #fff9e8; stroke-width: 6; stroke-linejoin: round; }
+
+/* ================= SUS DULCES TÍPICOS ================= */
+.v-banda { display: flex; justify-content: center; margin: 26px 0 18px; }
+.v-banda span {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 34px;
+  font-family: 'Fraunces', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #3b2a14;
+  background: #ecd9a4;
+  border-radius: 14px 40px 14px 40px / 40px 14px 40px 14px;
+  box-shadow: 0 3px 0 rgba(120, 90, 30, 0.2);
+}
+.v-banda svg { width: 34px; height: 22px; }
+
+.v-carrusel { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.v-flecha {
+  flex: none;
+  width: 50px;
+  height: 50px;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--tinta);
+  background: rgba(255, 250, 235, 0.6);
+  border: 2.5px solid #6b4f2a;
   border-radius: 50%;
 }
-.v-chip:nth-child(odd)  { transform: rotate(-1.5deg); }
-.v-chip:nth-child(even) { transform: rotate(1.2deg); }
-.v-chip:hover { transform: rotate(0) translateY(-2px); }
-.v-chip.activo {
-  font-weight: 700;
-  background: color-mix(in srgb, var(--tono, #888) 30%, #fff);
-  border-color: var(--tono, #888);
-}
-.v-chip.activo span { color: #fff; background: #2b2118; }
+.v-flecha:hover { background: #fff; }
 
-@media (max-width: 720px) {
-  .v-tarjeta { padding: 28px 20px 22px; }
-  .v-cabecera h2 { font-size: 2rem; }
-  .v-cuerpo { grid-template-columns: 1fr; gap: 24px; }
-  .v-polaroid { width: 240px; margin: 0 auto; }
+.v-lista { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; }
+.v-item {
+  position: relative;
+  width: 148px;
+  padding: 0;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  transition: transform 0.25s;
+}
+.v-item:hover { transform: translateY(-5px); }
+.v-circulo {
+  display: block;
+  width: 128px;
+  height: 128px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--c, #888), #5a4a38);
+  border: 5px solid #fff9e8;
+  border-radius: 50%;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+.v-circulo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.v-circulo b { display: grid; place-items: center; width: 100%; height: 100%; font-size: 3rem; font-weight: 400; }
+.v-etiqueta {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin: -16px auto 0;
+  padding: 8px 10px;
+  width: 140px;
+  min-height: 52px;
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #2b2118;
+  background: #f1dcae;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  display: grid;
+  place-items: center;
+}
+.v-item:nth-child(odd) .v-etiqueta  { transform: rotate(-1.5deg); }
+.v-item:nth-child(even) .v-etiqueta { transform: rotate(1.2deg); }
+.v-item.activo .v-circulo { border-color: var(--tono, #c9a77a); box-shadow: 0 0 0 4px #fff9e8, 0 8px 16px rgba(0, 0, 0, 0.35); }
+.v-item.activo .v-etiqueta { background: color-mix(in srgb, var(--tono, #c9a77a) 40%, #fff6dc); font-weight: 600; }
+
+/* ================= DECORACIONES (flores, hojas, rayitas) ================= */
+.deco { position: absolute; pointer-events: none; z-index: 4; overflow: visible; }
+.d-hojas-izq  { left: -34px; top: 40px; width: 110px; transform: rotate(-12deg); }
+.d-hojas-flor { left: -26px; top: 300px; width: 150px; }
+.d-hojas-der  { right: -34px; bottom: -26px; width: 140px; transform: scaleX(-1); }
+.d-rayitas    { right: 215px; top: 78px; width: 60px; }
+.d-rayitas-2  { left: 40px; top: 90px; width: 50px; }
+
+.v-polaroid .deco { z-index: 6; }
+
+.ventana.cambio .v-polaroid { animation: pop 0.45s ease; }
+.ventana.cambio .v-info { animation: entrar 0.4s ease; }
+@keyframes pop {
+  from { transform: rotate(2deg) scale(0.9); opacity: 0.4; }
+  to   { transform: rotate(-6deg) scale(1); opacity: 1; }
+}
+@keyframes entrar {
+  from { opacity: 0; transform: translateX(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ================= PANTALLAS MEDIANAS Y CELULAR ================= */
+@media (max-width: 980px) {
+  .v-papel { padding: 40px 30px 34px; }
+  .v-principal { grid-template-columns: 250px 1fr; }
+  .v-forma { display: none; }
+  .v-cerrar { top: 34px; right: 30px; width: 44px; height: 44px; }
+}
+
+@media (max-width: 680px) {
+  .ventana { padding: 14px 10px; }
+  .v-papel { padding: 36px 18px 30px; }
+  .v-principal { grid-template-columns: 1fr; gap: 22px; }
+  .v-polaroid { width: min(230px, 70%); margin: 10px auto 0; }
+  .v-info h2 { font-size: 2.4rem; }
+  .v-cerrar { top: 28px; right: 20px; width: 40px; height: 40px; font-size: 1.2rem; }
+  .v-banda span { font-size: 1.3rem; padding: 6px 22px; }
+  .v-carrusel { flex-wrap: wrap; }
+  .v-flecha { display: none; }
+  .v-lista { gap: 14px; }
+  .v-item { width: 120px; }
+  .v-circulo { width: 100px; height: 100px; }
+  .v-etiqueta { width: 116px; font-size: 0.85rem; }
+  .deco { display: none; }
 }
