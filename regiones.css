@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Caveat:wght@500;700&display=swap');
 
 /* ---------- COLORES DE ESTA PÁGINA (rosado suave) ---------- */
 body {
@@ -7,6 +7,8 @@ body {
   --menu: #f9efef;
   --linea: #dfc8ca;
 }
+
+.sin-scroll { overflow: hidden; }
 
 .pagina-regiones {
   position: relative;
@@ -54,7 +56,7 @@ body {
   line-height: 1.1;
 }
 
-/* ---------- TARJETAS ---------- */
+/* ---------- TARJETAS DE LAS REGIONES ---------- */
 .tarjetas {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -68,9 +70,14 @@ body {
   gap: 16px;
   min-height: 250px;
   padding: 20px 18px 22px;
+  border: none;
   background: #f2e9d5;
   border-radius: 3px;
   box-shadow: 0 4px 10px rgba(60, 50, 30, 0.2);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   transform: rotate(var(--giro, 0deg));
   transition: transform 0.25s, box-shadow 0.25s;
 }
@@ -88,10 +95,12 @@ body {
   transform: translateX(-50%) rotate(-1deg);
 }
 
-.tarjeta:hover {
+.tarjeta:hover,
+.tarjeta:focus-visible {
   transform: rotate(0deg) translateY(-6px);
   box-shadow: 0 10px 18px rgba(60, 50, 30, 0.28);
 }
+.tarjeta:focus-visible { outline: 2px solid var(--texto); outline-offset: 4px; }
 
 .foto {
   flex: 0 0 42%;
@@ -122,20 +131,12 @@ body {
 }
 
 .info h2 {
+  margin-bottom: 8px;
   font-family: var(--fuente-titulos);
   font-size: 1.7rem;
   font-weight: 700;
   line-height: 1.1;
   color: #1f3a2a;
-}
-
-.info h3 {
-  margin: 4px 0 10px;
-  font-family: var(--fuente-titulos);
-  font-size: 1.15rem;
-  font-style: italic;
-  font-weight: 500;
-  color: #2f5a44;
 }
 
 .info p {
@@ -146,8 +147,11 @@ body {
 
 .flecha {
   margin-top: auto;
-  padding-top: 10px;
-  font-size: 1.3rem;
+  padding-top: 12px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2f5a44;
 }
 
 /* Cada tarjeta: inclinación, color de cinta y altura distinta */
@@ -157,6 +161,221 @@ body {
 .tarjeta.amazonia  { --giro: -2deg;  --cinta: #c9776a; }
 .tarjeta.orinoquia { --giro: 1deg;   --cinta: #d9a02a; margin-top: -10px; }
 .tarjeta.insular   { --giro: 2deg;   --cinta: #9a78a8; margin-top: 10px; }
+
+/* =====================================================================
+   LLUVIA DE DULCES (se abre al hacer clic en una región)
+   ===================================================================== */
+.lluvia {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  overflow-y: auto;
+  padding: 0 24px 40px;
+  /* Hoja de cuaderno punteada */
+  background:
+    radial-gradient(circle, rgba(60, 50, 30, 0.13) 1.2px, transparent 1.4px) 0 0 / 22px 22px,
+    radial-gradient(ellipse at 50% 30%, #fffaf0 0%, #f6ecd8 70%, #efe1c6 100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.lluvia.abierta { opacity: 1; visibility: visible; }
+
+.ll-cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 0 10px;
+}
+
+.ll-antetitulo {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #4a4030;
+}
+
+.ll-cerrar {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #2b2118;
+  border-radius: 50%;
+  background: rgba(255, 250, 235, 0.9);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.ll-cerrar:hover { transform: rotate(90deg); }
+
+.ll-tablero {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ll-hilos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.ll-hilos path {
+  fill: none;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: aparecer 0.6s ease var(--d, 0s) forwards;
+}
+
+/* Las piezas del mapa mental se centran en su punto */
+.ll-suelto {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+/* Burbuja central: la región */
+.ll-centro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  border-radius: 46% 54% 52% 48% / 50% 44% 56% 50%;
+  background: var(--region);
+  box-shadow: 0 10px 24px rgba(60, 50, 30, 0.3), inset 0 -10px 0 rgba(0, 0, 0, 0.08);
+  color: #fffaf0;
+  text-align: center;
+  animation: inflar 0.6s cubic-bezier(.3, 1.6, .5, 1) var(--d, 0s) both;
+}
+.ll-centro-emoji { font-size: 2.6rem; line-height: 1; }
+.ll-centro strong {
+  margin-top: 6px;
+  font-family: var(--fuente-titulos);
+  font-size: 1.9rem;
+  line-height: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.ll-centro small {
+  margin-top: 6px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+}
+
+/* Notas adhesivas: los departamentos */
+.ll-nota {
+  z-index: 2;
+  max-width: 130px;
+  padding: 10px 12px 12px;
+  background: var(--papel);
+  box-shadow: 0 4px 8px rgba(60, 50, 30, 0.25);
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.05;
+  text-align: center;
+  color: #2b2118;
+  animation: pegar 0.5s cubic-bezier(.3, 1.5, .5, 1) var(--d, 0s) both;
+}
+.ll-nota.ll-suelto { transform: translate(-50%, -50%) rotate(var(--giro)); }
+/* Tachuela */
+.ll-nota::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff9a8a, #c4413a);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.ll-nota { position: relative; }
+.ll-nota.ll-suelto { position: absolute; }
+
+/* Gotas: los postres que "llueven" */
+.ll-gota {
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 124px;
+  animation: llover 0.9s cubic-bezier(.35, 1.4, .6, 1) var(--d, 0s) both;
+}
+.ll-circulo {
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border: 4px solid #fffaf0;
+  border-radius: 50% 50% 50% 50% / 58% 58% 42% 42%;
+  background: radial-gradient(circle at 35% 30%, #fff6 0, transparent 45%), var(--c);
+  box-shadow: 0 4px 10px rgba(60, 50, 30, 0.3);
+  transition: transform 0.2s;
+}
+.ll-circulo img { width: 100%; height: 100%; object-fit: cover; }
+.ll-circulo b { font-size: 2rem; font-weight: 400; }
+.ll-gota:hover .ll-circulo { transform: scale(1.12) rotate(-4deg); }
+.ll-nombre {
+  margin-top: 4px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: rgba(255, 250, 240, 0.85);
+  font-family: 'Caveat', cursive;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  color: #3a2f22;
+}
+
+/* Al acomodar por cambio de tamaño, no se repite la animación */
+.lluvia.sin-animacion * { animation: none !important; opacity: 1 !important; }
+
+@keyframes aparecer { to { opacity: 0.75; } }
+@keyframes inflar {
+  from { opacity: 0; scale: 0.3; }
+  to   { opacity: 1; scale: 1; }
+}
+@keyframes pegar {
+  from { opacity: 0; scale: 1.4; }
+  to   { opacity: 1; scale: 1; }
+}
+@keyframes llover {
+  0%   { opacity: 0; translate: 0 -70vh; }
+  60%  { opacity: 1; }
+  100% { opacity: 1; translate: 0 0; }
+}
+
+/* ---------- Versión en lista (celular) ---------- */
+.ll-tablero.ll-lista { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+.ll-lista .ll-centro { width: 170px; height: 170px; }
+.ll-grupo {
+  position: relative;
+  width: 100%;
+  padding: 18px 0 6px 18px;
+  border-left: 3px dashed var(--linea);
+}
+.ll-grupo .ll-nota { display: inline-block; transform: rotate(var(--giro)); max-width: none; }
+.ll-gotas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 4px;
+  margin-top: 16px;
+}
+.ll-lista .ll-gota { width: calc(33.33% - 4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .lluvia * { animation: none !important; opacity: 1 !important; }
+}
 
 /* ---------- PANTALLAS MÁS PEQUEÑAS ---------- */
 @media (max-width: 1000px) {
@@ -169,4 +388,5 @@ body {
   .encabezado h1 { font-size: 2.5rem; }
   .tarjetas { grid-template-columns: 1fr; }
   .tarjetas > .tarjeta { margin-top: 0; }
+  .lluvia { padding: 0 16px 30px; }
 }
