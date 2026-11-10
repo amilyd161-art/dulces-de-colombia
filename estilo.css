@@ -1,23 +1,19 @@
- @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
 /* ---------- COLORES Y FUENTES (cámbialos aquí) ---------- */
 :root {
-  --fondo: 
-#e4ece0;       /* verde salvia claro */
-  --panel: 
-#eef3ea;       /* un poco más claro, para el contenido */
-  --menu: 
-#f5f8f1;        /* barra superior */
-  --linea: 
-#c6d3c1;       /* bordes suaves */
-  --texto: 
-#223024;       /* verde casi negro */
+  --fondo: #e4ece0;       /* verde salvia claro */
+  --panel: #eef3ea;       /* un poco más claro, para el contenido */
+  --menu: #f5f8f1;        /* barra superior */
+  --linea: #c6d3c1;       /* bordes suaves */
+  --texto: #223024;       /* verde casi negro */
 
   --fuente-titulos: 'Playfair Display', Georgia, serif;
   --fuente-texto: 'Nunito Sans', Arial, sans-serif;
 }
 
-{ margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
   background-color: var(--fondo);
   color: var(--texto);
@@ -77,8 +73,7 @@ a { color: inherit; text-decoration: none; }
   margin: 0 auto;
   padding: 30px 60px;
   min-height: calc(100vh - 62px);
-  background: radial-gradient(ellipse at 30% 40%, 
-#f3f7ef 0%, var(--panel) 45%, var(--fondo) 100%);
+  background: radial-gradient(ellipse at 30% 40%, #f3f7ef 0%, var(--panel) 45%, var(--fondo) 100%);
 }
 
 .texto { flex: 1; max-width: 400px; }
