@@ -49,7 +49,6 @@
       <a href="regiones.html">Regiones</a>
       <a href="#">Recetas</a>
       <a href="#">Sobre el proyecto</a>
-      <span class="buscar">🔍</span>
     </nav>
   </header>
 
@@ -57,7 +56,6 @@
     <section class="texto">
       <h1>Un país,<br>mil sabores</h1>
       <p>Descubre los postres típicos de cada región de Colombia. Haz clic en el mapa y conoce la dulzura de su cultura.</p>
-      <a href="#mapa" class="explorar">📍 Explora el mapa</a>
     </section>
 
     <section class="mapa" id="mapa">
@@ -66,6 +64,7 @@
       <span class="etiqueta-region andina">⛰️ Andina</span>
       <span class="etiqueta-region orinoquia">Orinoquía</span>
       <span class="etiqueta-region amazonia">🌳 Amazonía</span>
+      <span class="etiqueta-region insular">🏝️ Insular</span>
 
       <svg id="mapa-svg" viewBox="240 80 660 900" xmlns="http://www.w3.org/2000/svg"
            role="img" aria-label="Mapa de Colombia por departamentos"></svg>
@@ -143,6 +142,18 @@
   </div>
 
   <script src="mapa.js"></script>
+  <script>
+    // Región Insular: San Andrés, Providencia y Santa Catalina
+    DEPARTAMENTOS.push({
+      "id": "san-andres",
+      "nombre": "San Andrés y\u00A0Providencia",
+      "region": "insular",
+      "color": "#3b8fd0",
+      "d": "M292,196C303,199 309,213 306,230C304,244 310,255 304,268C300,278 288,278 283,268C279,255 286,244 282,230C278,213 282,199 292,196Z M318,129C330,129 338,140 337,154C335,168 325,180 314,178C304,177 300,166 303,153C306,140 310,131 318,129Z M288,121C293,117 300,121 299,128C297,133 289,133 286,128Z",
+      "cx": 310,
+      "cy": 195
+    });
+  </script>
   <script src="postres.js"></script>
   <script src="detalle-postres.js"></script>
   <script src="ventana.js?v=3"></script>
