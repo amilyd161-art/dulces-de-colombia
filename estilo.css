@@ -137,12 +137,26 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
-.etiqueta-region.caribe    { left: 0;  top: 6%; }
+.etiqueta-region.caribe    { right: 4%; top: 5%; }
 .etiqueta-region.pacifica  { left: 0;  top: 40%; }
 .etiqueta-region.andina    { right: 0; top: 18%; }
 .etiqueta-region.orinoquia { right: 0; top: 44%; }
 .etiqueta-region.amazonia  { right: 0; top: 76%; }
 .etiqueta-region.insular   { left: 0;   top: 13%; }
+
+/* Recuadros de las islas (Región Insular) */
+.recuadros-islas { pointer-events: none; }
+.recuadros-islas rect {
+  fill: rgba(59, 143, 208, 0.10);
+  stroke: var(--texto);
+  stroke-width: 1.2;
+}
+.recuadros-islas text {
+  font-family: var(--fuente-titulos);
+  font-size: 15px;
+  fill: var(--texto);
+  text-anchor: middle;
+}
 
 /* ---------- CELULAR ---------- */
 @media (max-width: 800px) {
@@ -151,4 +165,5 @@ a { color: inherit; text-decoration: none; }
   .hero { flex-direction: column; padding: 24px 16px; }
   .texto h1 { font-size: 2.4rem; }
   .mapa { width: 100%; }
+  .etiqueta-region.insular { top: 21%; }
 }
