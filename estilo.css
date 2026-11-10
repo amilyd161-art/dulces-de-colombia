@@ -142,6 +142,7 @@ a { color: inherit; text-decoration: none; }
 .etiqueta-region.andina    { right: 0; top: 18%; }
 .etiqueta-region.orinoquia { right: 0; top: 44%; }
 .etiqueta-region.amazonia  { right: 0; top: 76%; }
+.etiqueta-region.insular   { left: 0;   top: 13%; }
 
 /* ---------- CELULAR ---------- */
 @media (max-width: 800px) {
