@@ -1,19 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
 /* ---------- COLORES Y FUENTES (cámbialos aquí) ---------- */
 :root {
-  --fondo: #e4ece0;       /* verde salvia claro */
-  --panel: #eef3ea;       /* un poco más claro, para el contenido */
-  --menu: #f5f8f1;        /* barra superior */
-  --linea: #c6d3c1;       /* bordes suaves */
-  --texto: #223024;       /* verde casi negro */
+  --fondo: 
+#e4ece0;       /* verde salvia claro */
+  --panel: 
+#eef3ea;       /* un poco más claro, para el contenido */
+  --menu: 
+#f5f8f1;        /* barra superior */
+  --linea: 
+#c6d3c1;       /* bordes suaves */
+  --texto: 
+#223024;       /* verde casi negro */
 
   --fuente-titulos: 'Playfair Display', Georgia, serif;
   --fuente-texto: 'Nunito Sans', Arial, sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
+{ margin: 0; padding: 0; box-sizing: border-box; }
 body {
   background-color: var(--fondo);
   color: var(--texto);
@@ -65,7 +69,6 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- HOME ---------- */
 .hero {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -74,11 +77,11 @@ a { color: inherit; text-decoration: none; }
   margin: 0 auto;
   padding: 30px 60px;
   min-height: calc(100vh - 62px);
-  overflow: hidden;
-  background: radial-gradient(ellipse at 30% 40%, #f3f7ef 0%, var(--panel) 45%, var(--fondo) 100%);
+  background: radial-gradient(ellipse at 30% 40%, 
+#f3f7ef 0%, var(--panel) 45%, var(--fondo) 100%);
 }
 
-.texto { position: relative; z-index: 2; flex: 1; max-width: 400px; }
+.texto { flex: 1; max-width: 400px; }
 
 .texto h1 {
   font-family: var(--fuente-titulos);
@@ -104,22 +107,10 @@ a { color: inherit; text-decoration: none; }
 }
 .explorar:hover { opacity: 0.6; }
 
-/* ---------- FLORES DE ADORNO ---------- */
-.adorno { position: absolute; z-index: 1; pointer-events: none; }
-.a-orquidea  { left: 8px;  top: 10px;    width: 150px; transform: rotate(-10deg); }
-.a-hojas-sup { left: 120px; top: -6px;   width: 130px; transform: rotate(35deg); opacity: 0.9; }
-.a-heliconia { left: 4%;   bottom: 6px;  width: 118px; transform: rotate(-6deg); }
-.a-hojas-inf { left: 14%;  bottom: -8px; width: 150px; opacity: 0.9; }
-.a-cafe-1    { left: 38%;  bottom: 22px; width: 64px;  transform: rotate(14deg); }
-.a-cafe-2    { left: 43%;  bottom: 6px;  width: 44px;  transform: rotate(-20deg); }
-.a-cafe-3    { right: 14px; bottom: 14px; width: 82px; transform: rotate(8deg); }
-.a-orq-der   { right: 6px;  top: 6px;    width: 96px;  transform: rotate(14deg); opacity: 0.95; }
-
 /* ---------- MAPA ---------- */
 .mapa {
-  position: relative;
-  z-index: 2;
   flex: 1;
+  position: relative;
   max-width: 560px;
 }
 
@@ -143,7 +134,6 @@ a { color: inherit; text-decoration: none; }
   stroke-width: 1.6;
 }
 
-/* Nombres de las regiones (cada uno en su sitio, sin encimarse) */
 .etiqueta-region {
   position: absolute;
   font-family: var(--fuente-titulos);
@@ -152,46 +142,12 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
-.etiqueta-region.caribe    { left: 22%; top: 2%; }
-.etiqueta-region.pacifica  { left: 0;   top: 42%; }
-.etiqueta-region.andina    { right: 0;  top: 18%; }
-.etiqueta-region.orinoquia { right: 0;  top: 44%; }
-.etiqueta-region.amazonia  { right: 0;  top: 76%; }
-
-/* ---------- RECUADRO DE LA REGIÓN INSULAR ---------- */
-.insular-caja {
-  position: absolute;
-  left: 0;
-  top: 9%;
-  width: 104px;
-  padding: 6px 6px 8px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.4);
-  border: 2px dashed rgba(34, 48, 36, 0.35);
-  border-radius: 16px;
-}
-
-.insular-caja svg { display: block; width: 100%; height: auto; }
-
-.insular-nombre {
-  display: block;
-  margin-top: 2px;
-  font-family: var(--fuente-titulos);
-  font-size: 1rem;
-  font-weight: 500;
-  pointer-events: none;
-}
-
-.isla { cursor: pointer; outline: none; }
-.isla:hover .dep,
-.isla:focus .dep {
-  filter: brightness(1.15) saturate(1.1);
-  stroke: var(--texto);
-  stroke-width: 1.6;
-}
-
-/* ---------- NOMBRES LARGOS EN LA VENTANA (ej. San Andrés, Providencia y Santa Catalina) ---------- */
-.v-info h2.largo { font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.08; }
+.etiqueta-region.caribe    { left: 0;  top: 6%; }
+.etiqueta-region.pacifica  { left: 0;  top: 40%; }
+.etiqueta-region.andina    { right: 0; top: 18%; }
+.etiqueta-region.orinoquia { right: 0; top: 44%; }
+.etiqueta-region.amazonia  { right: 0; top: 76%; }
+.etiqueta-region.insular   { left: 0;   top: 13%; }
 
 /* ---------- CELULAR ---------- */
 @media (max-width: 800px) {
@@ -200,9 +156,4 @@ a { color: inherit; text-decoration: none; }
   .hero { flex-direction: column; padding: 24px 16px; }
   .texto h1 { font-size: 2.4rem; }
   .mapa { width: 100%; }
-  .a-orquidea, .a-orq-der, .a-hojas-sup, .a-hojas-inf, .a-cafe-1, .a-cafe-2 { display: none; }
-  .a-heliconia { width: 80px; }
-  .a-cafe-3 { width: 56px; }
-  .insular-caja { top: 5%; width: 84px; padding: 4px 4px 6px; }
-  .insular-nombre { font-size: 0.85rem; }
 }
