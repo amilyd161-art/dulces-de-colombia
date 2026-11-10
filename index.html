@@ -49,7 +49,6 @@
       <a href="regiones.html">Regiones</a>
       <a href="#">Recetas</a>
       <a href="#">Sobre el proyecto</a>
-      <span class="buscar">🔍</span>
     </nav>
   </header>
 
@@ -57,7 +56,6 @@
     <section class="texto">
       <h1>Un país,<br>mil sabores</h1>
       <p>Descubre los postres típicos de cada región de Colombia. Haz clic en el mapa y conoce la dulzura de su cultura.</p>
-      <a href="#mapa" class="explorar">📍 Explora el mapa</a>
     </section>
 
     <section class="mapa" id="mapa">
@@ -146,29 +144,14 @@
   <script src="mapa.js"></script>
   <script>
     // ----- REGIÓN INSULAR: San Andrés, Providencia y Santa Catalina -----
-    // Las islas se dibujan en recuadros, más grandes que su tamaño real (como en los mapas escolares).
+    // Las islas se dibujan más grandes que su tamaño real para que se puedan ver y tocar.
     DEPARTAMENTOS.push({
       "id": "san-andres",
       "nombre": "San Andrés, Providencia y Santa Catalina",
       "region": "insular",
-      "color": "#3b8fd0",
-      "d": "M300,102 C309,108 312,125 309,143 C306,160 315,175 312,192 C309,209 300,224 288,227 C278,228 275,215 278,201 C281,183 274,169 275,151 C277,131 286,111 291,102 C294,98 297,99 300,102 Z M374,113 C386,111 395,121 393,134 C392,147 383,156 373,155 C363,153 358,143 361,132 C363,120 367,114 374,113 Z M356,95 C361,94 366,98 364,104 C363,108 357,110 354,107 C351,103 351,97 356,95 Z"
+      "color": "#4a8fa8",
+      "d": "M300,100L306,99L311,103L313,110L312,117L315,123L317,131L316,139L313,146L312,154L310,162L307,170L305,178L302,186L299,194L295,202L291,210L287,218L283,225L279,228L277,223L278,215L280,207L281,199L280,191L282,183L284,175L285,167L287,159L288,151L287,143L289,135L292,127L293,119L295,111L297,104Z M372,104L376,102L380,104L384,107L386,112L390,116L392,121L393,127L395,132L393,138L391,143L388,148L385,153L380,157L374,158L369,156L366,152L363,147L361,141L360,135L361,129L362,123L364,117L366,112L369,107Z M359,97L363,95L367,96L369,100L367,104L363,106L359,104L357,100Z"
     });
-
-    // Recuadros y nombres de las islas (solo decoración, no reciben clics)
-    (function () {
-      const NS = 'http://www.w3.org/2000/svg';
-      const mapa = document.getElementById('mapa-svg');
-      const grupo = document.createElementNS(NS, 'g');
-      grupo.setAttribute('class', 'recuadros-islas');
-      grupo.innerHTML =
-        '<rect x="262" y="90" width="66" height="146" rx="4"/>' +
-        '<rect x="338" y="90" width="70" height="70" rx="4"/>' +
-        '<text x="295" y="256">San Andrés</text>' +
-        '<text x="373" y="180">Providencia y</text>' +
-        '<text x="373" y="198">Santa Catalina</text>';
-      mapa.appendChild(grupo);
-    })();
   </script>
   <script src="postres.js"></script>
   <script src="detalle-postres.js"></script>
