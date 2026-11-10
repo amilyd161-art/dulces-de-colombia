@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regiones - Dulces de Colombia</title>
   <link rel="stylesheet" href="estilo.css?v=2">
-  <link rel="stylesheet" href="regiones.css?v=1">
+  <link rel="stylesheet" href="regiones.css?v=2">
 </head>
 <body>
 
@@ -19,7 +19,6 @@
       <a href="regiones.html" class="activo">Regiones</a>
       <a href="#">Recetas</a>
       <a href="#">Sobre el proyecto</a>
-      <span class="buscar">🔍</span>
     </nav>
   </header>
 
@@ -31,78 +30,88 @@
       <div class="raya"></div>
     </section>
 
-    <div class="nota">Elige un sabor y empieza el viaje →</div>
+    <div class="nota">Elige una región y empieza el viaje →</div>
 
     <section class="tarjetas">
 
-      <a href="regiones/caribe.html" class="tarjeta caribe">
-        <div class="foto"><img src="imagenes/caribe.jpg" alt="Enyucado"></div>
+      <button type="button" class="tarjeta caribe" data-region="caribe">
+        <div class="foto"><img src="imagenes/caribe.jpg" alt="Región Caribe"></div>
         <div class="info">
           <span class="numero">01</span>
           <h2>Caribe</h2>
-          <h3>Enyucado</h3>
-          <p>Suave, dorado y lleno de tradición. El sabor del Caribe en cada bocado.</p>
-          <span class="flecha">→</span>
+          <p>Siete departamentos bañados por el mar Caribe, entre playas, ciénagas y sabanas. Aquí el coco, el ñame, el tamarindo y la panela se convierten en dulces de calle y de plaza.</p>
+          <span class="flecha">Ver sus dulces →</span>
         </div>
-      </a>
+      </button>
 
-      <a href="regiones/andina.html" class="tarjeta andina">
-        <div class="foto"><img src="imagenes/andina.jpg" alt="Cuajada con melao"></div>
+      <button type="button" class="tarjeta andina" data-region="andina">
+        <div class="foto"><img src="imagenes/andina.jpg" alt="Región Andina"></div>
         <div class="info">
           <span class="numero">02</span>
           <h2>Andina</h2>
-          <h3>Cuajada con melao</h3>
-          <p>La mezcla perfecta entre la frescura de la cuajada y la dulzura del melao de caña.</p>
-          <span class="flecha">→</span>
+          <p>El corazón montañoso del país, atravesado por las tres cordilleras. Tierra de café, caña panelera y tradición lechera: de aquí salen arequipes, brevas, bocadillos y cuajadas.</p>
+          <span class="flecha">Ver sus dulces →</span>
         </div>
-      </a>
+      </button>
 
-      <a href="regiones/pacifica.html" class="tarjeta pacifica">
-        <div class="foto"><img src="imagenes/pacifica.jpg" alt="Cocadas del Pacífico"></div>
+      <button type="button" class="tarjeta pacifica" data-region="pacifica">
+        <div class="foto"><img src="imagenes/pacifica.jpg" alt="Región Pacífica"></div>
         <div class="info">
           <span class="numero">03</span>
           <h2>Pacífica</h2>
-          <h3>Cocadas del Pacífico</h3>
-          <p>Un bocado de mar, tradición y coco, con el alma del Pacífico colombiano.</p>
-          <span class="flecha">→</span>
+          <p>Selva húmeda, ríos y costa sobre el océano Pacífico. Su dulcería mezcla herencia afro e indígena con frutas como el borojó, el chontaduro y el coco.</p>
+          <span class="flecha">Ver sus dulces →</span>
         </div>
-      </a>
+      </button>
 
-      <a href="regiones/amazonia.html" class="tarjeta amazonia">
-        <div class="foto"><img src="imagenes/amazonia.jpg" alt="Dulce de copoazú"></div>
+      <button type="button" class="tarjeta amazonia" data-region="amazonia">
+        <div class="foto"><img src="imagenes/amazonia.jpg" alt="Región Amazónica"></div>
         <div class="info">
           <span class="numero">04</span>
           <h2>Amazonía</h2>
-          <h3>Dulce de copoazú</h3>
-          <p>Exótico, intenso y único. Un fruto amazónico que se convierte en un postre inolvidable.</p>
-          <span class="flecha">→</span>
+          <p>La gran selva del sur del país. Sus frutos, como el copoazú, el arazá, el camu camu y la cocona, dan dulces ácidos, aromáticos y llenos de identidad indígena.</p>
+          <span class="flecha">Ver sus dulces →</span>
         </div>
-      </a>
+      </button>
 
-      <a href="regiones/orinoquia.html" class="tarjeta orinoquia">
-        <div class="foto"><img src="imagenes/orinoquia.jpg" alt="Tungos dulces"></div>
+      <button type="button" class="tarjeta orinoquia" data-region="orinoquia">
+        <div class="foto"><img src="imagenes/orinoquia.jpg" alt="Región Orinoquía"></div>
         <div class="info">
           <span class="numero">05</span>
           <h2>Orinoquía</h2>
-          <h3>Tungos dulces</h3>
-          <p>Pequeños y tentadores, los tungos son un clásico postre de la llanura, con todo el sabor del campo.</p>
-          <span class="flecha">→</span>
+          <p>Los Llanos Orientales: sabanas inmensas, ríos y vida ganadera. La leche, la panela y frutas como el moriche y el merey protagonizan sus dulces de campo.</p>
+          <span class="flecha">Ver sus dulces →</span>
         </div>
-      </a>
+      </button>
 
-      <a href="regiones/insular.html" class="tarjeta insular">
-        <div class="foto"><img src="imagenes/insular.jpg" alt="Torta de coco"></div>
+      <button type="button" class="tarjeta insular" data-region="insular">
+        <div class="foto"><img src="imagenes/insular.jpg" alt="Región Insular"></div>
         <div class="info">
           <span class="numero">06</span>
           <h2>Insular</h2>
-          <h3>Torta de coco</h3>
-          <p>Fresca, esponjosa y llena de sabor a mar. El postre que sabe a isla.</p>
-          <span class="flecha">→</span>
+          <p>El archipiélago de San Andrés, Providencia y Santa Catalina, en pleno mar Caribe. La cultura raizal se siente en sus dulces de coco y en recetas con nombre en inglés criollo.</p>
+          <span class="flecha">Ver sus dulces →</span>
         </div>
-      </a>
+      </button>
 
     </section>
   </main>
+
+  <!-- Lluvia de dulces: se abre al hacer clic en una región -->
+  <div id="lluvia" class="lluvia" aria-hidden="true">
+    <div class="ll-cabecera">
+      <p class="ll-antetitulo">Lluvia de dulces</p>
+      <button type="button" class="ll-cerrar" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="ll-tablero">
+      <svg class="ll-hilos" aria-hidden="true"></svg>
+    </div>
+  </div>
+
+  <script src="mapa.js"></script>
+  <script src="postres.js"></script>
+  <script src="detalle-postres.js"></script>
+  <script src="lluvia.js?v=1"></script>
 
 </body>
 </html>
