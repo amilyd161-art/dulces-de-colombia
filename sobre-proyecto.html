@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre el proyecto · Dulces de Colombia</title>
+<link rel="stylesheet" href="estilo.css">
+<style>
+  /* Ajusta SOLO esta variable si el verde de tu inicio es otro */
+  .sobre-proyecto {
+    --verde-fondo: var(--fondo, #e3ecdc);
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    background: var(--verde-fondo);
+    font-family: inherit;          /* misma tipografía del resto de la página */
+    overflow: hidden;
+  }
+  .sobre-proyecto .papel {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    text-align: center;
+  }
+  .sobre-proyecto h1 { font-family: inherit; margin-bottom: 20px; }
+  .sobre-proyecto p  { font-family: inherit; line-height: 1.7; margin-bottom: 16px; }
+
+  /* Flores decorativas: cámbialas por las de la página de Recetas */
+  .sobre-proyecto .flor {
+    position: absolute;
+    font-size: 3rem;
+    opacity: .85;
+    pointer-events: none;
+  }
+  .flor.f1 { top: 8%;    left: 6%;  transform: rotate(-15deg); }
+  .flor.f2 { top: 14%;   right: 8%; font-size: 4rem; transform: rotate(12deg); }
+  .flor.f3 { bottom: 10%; left: 10%; font-size: 4rem; transform: rotate(8deg); }
+  .flor.f4 { bottom: 8%;  right: 6%; transform: rotate(-10deg); }
+
+  @media (max-width: 600px) {
+    .sobre-proyecto .flor { font-size: 2rem; }
+    .flor.f2, .flor.f3 { font-size: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="menu">
+  <a href="index.html" class="logo">
+    <span class="logo-icono">🏺</span>
+    <span>Dulces<br><strong>de Colombia</strong></span>
+  </a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="regiones.html">Regiones</a>
+    <a href="#">Recetas</a>
+    <a href="sobre-proyecto.html" class="activo">Sobre el proyecto</a>
+    <span class="buscar">🔍</span>
+  </nav>
+</header>
+
+<main class="sobre-proyecto">
+  <span class="flor f1">🌸</span>
+  <span class="flor f2">🌼</span>
+  <span class="flor f3">🌺</span>
+  <span class="flor f4">🌷</span>
+
+  <section class="papel">
+    <h1>Sobre el proyecto</h1>
+    <p>
+      <strong>Dulces de Colombia</strong> nació para celebrar la dulzura de nuestro país.
+      Aquí encontrarás los postres típicos de cada región, desde el Caribe hasta la
+      Amazonía, pasando por la región Andina, la Pacífica y la Orinoquía.
+    </p>
+    <p>
+      Con un mapa por departamentos puedes recorrer Colombia a tu ritmo: haz clic en un
+      lugar, conoce sus postres y descubre las recetas y la historia que hay detrás de
+      cada sabor.
+    </p>
+    <p>
+      Es un proyecto hecho con cariño para que la cultura y los sabores de cada rincón
+      del país sigan vivos. <em>Un país, mil sabores.</em>
+    </p>
+  </section>
+</main>
+
+</body>
+</html>
