@@ -3,7 +3,7 @@ const TEMAS = {
   caribe:    { base: '#16403f', etiqueta: 'Región Caribe' },
   andina:    { base: '#4a2a1c', etiqueta: 'Región Andina' },
   pacifica:  { base: '#2a3d3a', etiqueta: 'Región Pacífica' },
-  orinoquia: { base: '#4a3a14', etiqueta: 'Región Orinoquía' }
+  orinoquia: { base: '#4a3a14', etiqueta: 'Región Orinoquía' },
   insular:   { base: '#14476a', etiqueta: 'Región Insular' }
 };
 
