@@ -66,6 +66,7 @@
       <span class="etiqueta-region andina">⛰️ Andina</span>
       <span class="etiqueta-region orinoquia">Orinoquía</span>
       <span class="etiqueta-region amazonia">🌳 Amazonía</span>
+      <span class="etiqueta-region insular">🏝️ Insular</span>
 
       <svg id="mapa-svg" viewBox="240 80 660 900" xmlns="http://www.w3.org/2000/svg"
            role="img" aria-label="Mapa de Colombia por departamentos"></svg>
@@ -143,6 +144,32 @@
   </div>
 
   <script src="mapa.js"></script>
+  <script>
+    // ----- REGIÓN INSULAR: San Andrés, Providencia y Santa Catalina -----
+    // Las islas se dibujan en recuadros, más grandes que su tamaño real (como en los mapas escolares).
+    DEPARTAMENTOS.push({
+      "id": "san-andres",
+      "nombre": "San Andrés, Providencia y Santa Catalina",
+      "region": "insular",
+      "color": "#3b8fd0",
+      "d": "M300,102 C309,108 312,125 309,143 C306,160 315,175 312,192 C309,209 300,224 288,227 C278,228 275,215 278,201 C281,183 274,169 275,151 C277,131 286,111 291,102 C294,98 297,99 300,102 Z M374,113 C386,111 395,121 393,134 C392,147 383,156 373,155 C363,153 358,143 361,132 C363,120 367,114 374,113 Z M356,95 C361,94 366,98 364,104 C363,108 357,110 354,107 C351,103 351,97 356,95 Z"
+    });
+
+    // Recuadros y nombres de las islas (solo decoración, no reciben clics)
+    (function () {
+      const NS = 'http://www.w3.org/2000/svg';
+      const mapa = document.getElementById('mapa-svg');
+      const grupo = document.createElementNS(NS, 'g');
+      grupo.setAttribute('class', 'recuadros-islas');
+      grupo.innerHTML =
+        '<rect x="262" y="90" width="66" height="146" rx="4"/>' +
+        '<rect x="338" y="90" width="70" height="70" rx="4"/>' +
+        '<text x="295" y="256">San Andrés</text>' +
+        '<text x="373" y="180">Providencia y</text>' +
+        '<text x="373" y="198">Santa Catalina</text>';
+      mapa.appendChild(grupo);
+    })();
+  </script>
   <script src="postres.js"></script>
   <script src="detalle-postres.js"></script>
   <script src="ventana.js?v=3"></script>
