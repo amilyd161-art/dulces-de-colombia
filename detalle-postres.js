@@ -91,6 +91,14 @@ const DETALLE = {
   "fresas-crema": { nombre: "Fresas con crema", emoji: "🍓", color: "#d94a5a",
     texto: "Fresas frescas servidas con crema de leche. Sencillo y refrescante, uno de los postres más queridos de la sabana de Bogotá." },
 
+  // --- Bogotá D.C. ---
+  "obleas-arequipe": { nombre: "Obleas con arequipe", emoji: "🍯", color: "#d9a85a",
+    texto: "Dos láminas finas y crocantes de oblea con arequipe en medio. Se venden en la calle y en los parques, y son un clásico de la ciudad." },
+  "merengon": { nombre: "Merengón", emoji: "🍰", color: "#f0e6d2",
+    texto: "Base de merengue crocante cubierta con crema de leche batida y fruta. Contrasta lo crujiente con lo cremoso." },
+  "arroz-con-leche": { nombre: "Arroz con leche", emoji: "🍚", color: "#f0e6cc",
+    texto: "Arroz cocinado lentamente con leche, azúcar y canela hasta quedar cremoso. Un postre de casa presente en toda Colombia." },
+
   // --- Huila ---
   "nochebuena-cactus": { nombre: "Nochebuena de cactus de la Tatacoa", emoji: "🌵", color: "#c9a24b",
     texto: "Dulce artesanal elaborado con cactus del desierto de la Tatacoa, en Villavieja, Huila. A la planta se le quitan las espinas y la piel para aprovechar su pulpa, con la que se preparan distintos dulces, entre ellos la Noche buena." },
@@ -294,6 +302,7 @@ const DEP_POSTRES = {
   "boyaca":             ["plumeros", "arequipe-cabra", "brevas-arequipe", "mantecadas", "papayuela"],
   "caldas":             ["corchos", "alfandoques", "brevas", "arequipe-casero", "flan-cafe"],
   "cundinamarca":       ["suspiros-bogotanos", "cuajada-melao", "natas", "merengon-guanabana", "fresas-crema"],
+  "bogota":             ["obleas-arequipe", "merengon", "brevas-arequipe", "natas", "arroz-con-leche"],
   "huila":              ["nochebuena-cactus", "achira", "jalea-guayaba", "papaya-verde", "guanabana"],
   "norte-de-santander": ["quencos", "cortado-cabra", "dulce-leche", "bocadillo-guayaba", "arequipe"],
   "quindio":            ["dulce-cafe", "arequipe-cafe", "alfandoques", "brevas-arequipe", "natilla-panela"],
