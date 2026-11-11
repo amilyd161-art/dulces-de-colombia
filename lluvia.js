@@ -25,6 +25,49 @@ const hilos = lluvia.querySelector('.ll-hilos');
 const NS_SVG = 'http://www.w3.org/2000/svg';
 let regionAbierta = null;
 
+// ---------- Música de la región ----------
+// Cada región tiene su canción en sonidos/<region>.mp3 (caribe, andina, pacifica, amazonia, orinoquia, insular).
+// Empieza al abrir la región (el clic del usuario permite que el navegador la deje sonar) y se apaga al cerrarla.
+const VOLUMEN_MUSICA = 0.6;
+let musica = null;
+
+function aplicarVolumen(audio, volumen) {
+  audio.volume = Math.min(Math.max(volumen, 0), 1);
+}
+
+// Sube o baja el volumen poco a poco; al terminar puede ejecutar algo (por ejemplo, pausar)
+function desvanecer(audio, desde, hasta, segundos, alTerminar) {
+  clearInterval(audio.fade);
+  const pasos = segundos * 20;
+  let n = 0;
+  audio.fade = setInterval(() => {
+    n++;
+    aplicarVolumen(audio, desde + (hasta - desde) * (n / pasos));
+    if (n >= pasos) {
+      clearInterval(audio.fade);
+      if (alTerminar) alTerminar();
+    }
+  }, 50);
+}
+
+function ponerMusica(region) {
+  quitarMusica();
+  const audio = new Audio('sonidos/' + region + '.mp3');
+  audio.loop = true;
+  aplicarVolumen(audio, 0);
+  musica = audio;
+  audio.play().then(() => {
+    if (musica === audio) desvanecer(audio, 0, VOLUMEN_MUSICA, 1.5);
+  }).catch(() => {});
+}
+
+function quitarMusica() {
+  if (!musica) return;
+  const audio = musica;
+  musica = null;
+  desvanecer(audio, audio.volume, 0, 0.8, () => audio.pause());
+}
+
 // ---------- Datos ----------
 function departamentosDe(region) {
   const lista = DEPARTAMENTOS.concat(DEPTOS_EXTRA.filter(e => !DEPARTAMENTOS.some(d => d.id === e.id)));
@@ -221,6 +264,7 @@ function dibujar(region) {
 
 function abrirLluvia(region) {
   regionAbierta = region;
+  ponerMusica(region);
   lluvia.classList.remove('sin-animacion');
   lluvia.classList.add('abierta');
   lluvia.setAttribute('aria-hidden', 'false');
@@ -232,6 +276,7 @@ function abrirLluvia(region) {
 
 function cerrarLluvia() {
   regionAbierta = null;
+  quitarMusica();
   lluvia.classList.remove('abierta');
   lluvia.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('sin-scroll');
